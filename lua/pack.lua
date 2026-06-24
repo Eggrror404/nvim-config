@@ -34,11 +34,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
         end
         deferred = nil
         _G.profile = profile
-
-        -- table.sort(profile, function(a, b)
-        --     return a.time < b.time
-        -- end)
-        -- vim.print(vim.inspect(profile))
     end,
 })
 

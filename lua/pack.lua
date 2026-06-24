@@ -3,14 +3,26 @@
 ---@field opts? table
 ---@field setup? string | fun(opts: table)
 
+local profile = { total = 0, arglist = vim.fn.argv(-1) }
+
 ---@param spec PluginSpec
 local function load_plugin(spec)
+    local start = vim.uv.hrtime()
+
     vim.pack.add { spec }
-    if spec.setup and type(spec.setup) == "string" then
+    if type(spec.setup) == "string" then
         require(spec.setup).setup(spec.opts or {})
-    elseif spec.setup and type(spec.setup) == "function" then
+    elseif type(spec.setup) == "function" then
         spec.setup(spec.opts or {})
     end
+
+    local time = (vim.uv.hrtime() - start) / 1e6
+    profile[#profile + 1] = {
+        name = spec.name or spec.src,
+        eager = spec.eager,
+        time = time,
+    }
+    profile.total = profile.total + time
 end
 
 local deferred = {}
@@ -21,6 +33,12 @@ vim.api.nvim_create_autocmd("VimEnter", {
             load_plugin(spec)
         end
         deferred = nil
+        _G.profile = profile
+
+        -- table.sort(profile, function(a, b)
+        --     return a.time < b.time
+        -- end)
+        -- vim.print(vim.inspect(profile))
     end,
 })
 

@@ -1,1 +1,3 @@
-print("hi")
+require "options"
+require "keymaps"
+require "autocmds"

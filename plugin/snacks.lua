@@ -129,28 +129,28 @@ local maps = {
     },
     -- gh
     {
-        "<leader>gi",
+        "<leader>Gi",
         function()
             Snacks.picker.gh_issue()
         end,
         desc = "GitHub Issues (open)",
     },
     {
-        "<leader>gI",
+        "<leader>GI",
         function()
             Snacks.picker.gh_issue { state = "all" }
         end,
         desc = "GitHub Issues (all)",
     },
     {
-        "<leader>gp",
+        "<leader>Gp",
         function()
             Snacks.picker.gh_pr()
         end,
         desc = "GitHub Pull Requests (open)",
     },
     {
-        "<leader>gP",
+        "<leader>GP",
         function()
             Snacks.picker.gh_pr { state = "all" }
         end,
@@ -214,17 +214,16 @@ require("pack").add {
         src = "https://github.com/folke/snacks.nvim",
         ---@type snacks.Config
         opts = {
-            bufdelete = { enabled = true },
+            bufdelete = {},
             indent = {
-                enabled = true,
                 animate = { enabled = false },
             },
-            input = { enabeld = true, icon_pos = false },
-            lazygit = { enabled = true, configure = false, win = { border = "rounded" } },
-            picker = { enabled = true },
-            quickfile = { enabled = true },
-            rename = { enabled = true },
-            terminial = { enabled = true },
+            input = { icon_pos = false },
+            lazygit = { win = { border = "rounded" } },
+            picker = {},
+            quickfile = {},
+            rename = {},
+            terminial = {},
 
             styles = {
                 input = {

@@ -63,3 +63,6 @@ vim.o.shiftwidth = 4
 
 -- window borders
 vim.o.winborder = "rounded"
+
+-- 24-bit RGB (required by notify, colorizer)
+vim.o.termguicolors = true

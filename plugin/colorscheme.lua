@@ -10,7 +10,7 @@ require("pack").add {
         },
         setup = function(opts)
             require("rose-pine").setup(opts)
-            vim.cmd "colorscheme rose-pine"
+            vim.cmd.colorscheme "rose-pine"
         end,
     },
 }

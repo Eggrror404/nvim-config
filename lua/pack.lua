@@ -1,12 +1,14 @@
 ---@class PluginSpec : vim.pack.Spec
 ---@field eager? boolean
 ---@field opts? table
----@field setup? fun(opts: table)
+---@field setup? string | fun(opts: table)
 
 ---@param spec PluginSpec
 local function load_plugin(spec)
     vim.pack.add { spec }
-    if spec.setup then
+    if spec.setup and type(spec.setup) == "string" then
+        require(spec.setup).setup(spec.opts or {})
+    elseif spec.setup and type(spec.setup) == "function" then
         spec.setup(spec.opts or {})
     end
 end

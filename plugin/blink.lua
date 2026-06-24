@@ -1,3 +1,15 @@
+local default_sources = { "lsp", "path", "snippets", "buffer" }
+local per_filetype = {
+    lua = { inherit_defaults = true, "lazydev" },
+}
+local providers = {
+    lazydev = {
+        name = "LazyDev",
+        module = "lazydev.integrations.blink",
+        score_offset = 100,
+    },
+}
+
 require("pack").add {
     { src = "https://github.com/rafamadriz/friendly-snippets" },
     {
@@ -32,7 +44,9 @@ require("pack").add {
             -- Default list of enabled providers defined so that you can extend it
             -- elsewhere in your config, without redefining it, due to `opts_extend`
             sources = {
-                default = { "lsp", "path", "snippets", "buffer" },
+                default = default_sources,
+                per_filetype = per_filetype,
+                providers = providers,
             },
 
             -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
@@ -45,8 +59,6 @@ require("pack").add {
             -- Signature help is experimental, requires opt-in
             signature = { enabled = true },
         },
-        setup = function(opts)
-            require("blink-cmp").setup(opts)
-        end,
+        setup = "blink.cmp",
     },
 }

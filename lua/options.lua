@@ -31,7 +31,7 @@ vim.o.updatetime = 250
 -- decrease mapped sequence wait time
 vim.o.timeoutlen = 500
 
--- cursor moves to right/below when split
+-- new windows open on right/below and moves cursor
 -- vim.o.splitright = true
 -- vim.o.splitbelow = true
 

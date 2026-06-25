@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
             return
         end
 
-        if target_path:find "^oil:///" == 1 then
+        if vim.startswith(target_path, "oil:///") then
             target_path = require("oil").get_current_dir() or ""
         elseif vim.fn.isdirectory(target_path) == 0 then
             target_path = vim.fn.expand "%:p:h"

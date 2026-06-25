@@ -48,20 +48,20 @@ local function on_attach(bufnr)
     end, { desc = "Toggle word diff" })
 end
 
-require("pack").add {
-    {
-        src = "https://github.com/lewis6991/gitsigns.nvim",
-        opts = {
-            signs = {
-                add = { text = "+" },
-                change = { text = "~" },
-                delete = { text = "_" },
-                topdelete = { text = "‾" },
-                changedelete = { text = "~" },
-                untracked = { text = "┆" },
-            },
-            on_attach = on_attach,
+require("lazyload").defer(function()
+    vim.pack.add {
+        { src = "https://github.com/lewis6991/gitsigns.nvim" },
+    }
+
+    require("gitsigns").setup {
+        signs = {
+            add = { text = "+" },
+            change = { text = "~" },
+            delete = { text = "_" },
+            topdelete = { text = "‾" },
+            changedelete = { text = "~" },
+            untracked = { text = "┆" },
         },
-        setup = "gitsigns",
-    },
-}
+        on_attach = on_attach,
+    }
+end)

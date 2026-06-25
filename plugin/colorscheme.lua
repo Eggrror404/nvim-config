@@ -1,16 +1,16 @@
-require("pack").add {
-    {
-        src = "https://github.com/rose-pine/neovim",
-        name = "rose-pine",
-        opts = {
-            variant = "main",
-            styles = {
-                transparency = true,
-            },
+require("lazyload").defer(function()
+    vim.pack.add {
+        {
+            src = "https://github.com/rose-pine/neovim",
+            name = "rose-pine",
         },
-        setup = function(opts)
-            require("rose-pine").setup(opts)
-            vim.cmd.colorscheme "rose-pine"
-        end,
-    },
-}
+    }
+
+    require("rose-pine").setup {
+        variant = "main",
+        styles = {
+            transparency = true,
+        },
+    }
+    vim.cmd.colorscheme "rose-pine"
+end, { sync = true })

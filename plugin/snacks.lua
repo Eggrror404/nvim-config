@@ -209,44 +209,41 @@ local maps = {
     },
 }
 
-require("pack").add {
-    {
-        src = "https://github.com/folke/snacks.nvim",
-        ---@type snacks.Config
-        opts = {
-            bufdelete = {},
-            indent = {
-                animate = { enabled = false },
-            },
-            input = { icon_pos = false },
-            lazygit = { win = { border = "rounded" } },
-            picker = {},
-            quickfile = {},
-            rename = {},
-            terminial = {},
+require("lazyload").defer(function()
+    vim.pack.add {
+        { src = "https://github.com/folke/snacks.nvim" },
+    }
 
-            styles = {
-                input = {
-                    title_pos = "left",
-                    width = 30,
-                    relative = "cursor",
-                    row = -3,
-                    col = 0,
-                },
+    require("snacks").setup {
+        bufdelete = {},
+        indent = {
+            animate = { enabled = false },
+        },
+        input = { icon_pos = false },
+        lazygit = { win = { border = "rounded" } },
+        picker = {},
+        quickfile = {},
+        rename = {},
+        terminial = {},
+
+        styles = {
+            input = {
+                title_pos = "left",
+                width = 30,
+                relative = "cursor",
+                row = -3,
+                col = 0,
             },
         },
-        setup = function(opts)
-            require("snacks").setup(opts)
+    }
 
-            for _, map in ipairs(maps) do
-                local mapopts = {}
-                for key, val in pairs(map) do
-                    if type(key) ~= "number" and key ~= "mode" then
-                        mapopts[key] = val
-                    end
-                end
-                vim.keymap.set(map.mode or "n", map[1], map[2], mapopts)
+    for _, map in ipairs(maps) do
+        local mapopts = {}
+        for key, val in pairs(map) do
+            if type(key) ~= "number" and key ~= "mode" then
+                mapopts[key] = val
             end
-        end,
-    },
-}
+        end
+        vim.keymap.set(map.mode or "n", map[1], map[2], mapopts)
+    end
+end)

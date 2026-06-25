@@ -5,6 +5,7 @@ require("pack").add {
             icons = { mappings = false },
             spec = {
                 { "<leader>s", group = "Search" },
+                { "<leader>h", group = "Git Hunk" },
                 { "<leader>u", group = "Toggle" },
                 { "<leader>G", group = "GitHub" },
             },

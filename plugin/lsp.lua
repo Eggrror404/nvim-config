@@ -62,6 +62,14 @@ require("lazyload").defer(function()
                         group = highlight_augroup,
                         callback = vim.lsp.buf.clear_references,
                     })
+
+                    vim.api.nvim_create_autocmd("LspDetach", {
+                        group = vim.api.nvim_create_augroup("lsp-detach-highlight", { clear = true }),
+                        callback = function(event2)
+                            vim.lsp.buf.clear_references()
+                            vim.api.nvim_clear_autocmds { group = "lsp-highlight", buffer = event2.buf }
+                        end,
+                    })
                 end
             end
 
@@ -89,18 +97,13 @@ require("lazyload").defer(function()
 
     -- Reset on detach so :lsp restart/:lsp stop don't leave stale state.
     vim.api.nvim_create_autocmd("LspDetach", {
-        group = vim.api.nvim_create_augroup("lsp-detach-cleanup", { clear = true }),
+        group = vim.api.nvim_create_augroup("lsp-detach-diagnostic", { clear = true }),
         callback = function(args)
             local client = vim.lsp.get_client_by_id(args.data.client_id)
             if not client then
                 return
             end
 
-            -- highlights autocmd
-            vim.lsp.buf.clear_references()
-            vim.api.nvim_clear_autocmds { group = "lsp-highlight", buffer = args.buf }
-
-            -- diagnostics
             local prefix = ("nvim.lsp.%s.%d"):format(client.name, client.id)
             for namespace, metadata in pairs(vim.diagnostic.get_namespaces()) do
                 local name = metadata.name or ""

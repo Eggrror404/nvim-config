@@ -7,14 +7,14 @@ require("lazyload").defer(function()
         options = {
             parsers = {
                 css_fn = true,
-                names = { enabled = false },
-                hex = { enabled = true },
+                names = { enable = false },
+                hex = { default = true },
                 tailwind = { lsp = true },
             },
         },
         filetypes = {
             "*",
-            css = { names = { enabled = true } },
+            css = { names = { enable = true } },
         },
     }
 end)

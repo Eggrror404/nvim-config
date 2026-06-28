@@ -28,6 +28,8 @@ local formatters_by_ft = {
     ["handlebars"] = { "prettierd" },
     ["svelte"] = { "prettierd" },
     ["astro"] = { "prettierd" },
+
+    gdscript = { "gdformat" },
 }
 
 local formatters = {

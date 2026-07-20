@@ -23,6 +23,13 @@ local maps = {
     },
     -- picker
     {
+        "<leader>sp",
+        function()
+            Snacks.picker.pickers()
+        end,
+        desc = "Available pickers",
+    },
+    {
         "<leader>sf",
         function()
             Snacks.picker.files {
@@ -127,35 +134,6 @@ local maps = {
         end,
         desc = "Undo History",
     },
-    -- gh
-    {
-        "<leader>Gi",
-        function()
-            Snacks.picker.gh_issue()
-        end,
-        desc = "GitHub Issues (open)",
-    },
-    {
-        "<leader>GI",
-        function()
-            Snacks.picker.gh_issue { state = "all" }
-        end,
-        desc = "GitHub Issues (all)",
-    },
-    {
-        "<leader>Gp",
-        function()
-            Snacks.picker.gh_pr()
-        end,
-        desc = "GitHub Pull Requests (open)",
-    },
-    {
-        "<leader>GP",
-        function()
-            Snacks.picker.gh_pr { state = "all" }
-        end,
-        desc = "GitHub Pull Requests (all)",
-    },
     -- LSP
     {
         "gd",
@@ -194,14 +172,14 @@ local maps = {
         desc = "Goto Type Definition",
     },
     {
-        "<leader>ss",
+        "<leader>ls",
         function()
             Snacks.picker.lsp_symbols()
         end,
         desc = "LSP Symbols",
     },
     {
-        "<leader>sS",
+        "<leader>lS",
         function()
             Snacks.picker.lsp_workspace_symbols()
         end,
@@ -233,6 +211,10 @@ require("lazyload").defer(function()
                 relative = "cursor",
                 row = -3,
                 col = 0,
+            },
+            lazygit = {
+                height = 0,
+                width = 0.9,
             },
         },
     }

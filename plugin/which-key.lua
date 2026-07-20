@@ -9,7 +9,7 @@ require("lazyload").defer(function()
             { "<leader>s", group = "Search" },
             { "<leader>h", group = "Git Hunk" },
             { "<leader>u", group = "Toggle" },
-            { "<leader>G", group = "GitHub" },
+            { "<leader>l", group = "LSP" },
         },
     }
 end)

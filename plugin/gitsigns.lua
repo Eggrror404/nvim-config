@@ -10,7 +10,7 @@ local function on_attach(bufnr)
     map("n", "]h", function()
         gitsigns.nav_hunk "next"
     end, { desc = "Next hunk" })
-    map("n", "[j", function()
+    map("n", "[h", function()
         gitsigns.nav_hunk "prev"
     end, { desc = "Previous hunk" })
 
@@ -29,6 +29,7 @@ local function on_attach(bufnr)
     map("n", "<leader>hS", gitsigns.stage_buffer, { desc = "Stage buffer" })
     map("n", "<leader>hR", gitsigns.reset_buffer, { desc = "Reset buffer" })
     map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "Preview hunk diff" })
+    map("n", "<leader>hi", gitsigns.preview_hunk_inline, { desc = "Inline hunk diff" })
 
     map("n", "<leader>hb", function()
         gitsigns.blame_line { full = true }
@@ -36,7 +37,7 @@ local function on_attach(bufnr)
 
     map("n", "<leader>hd", gitsigns.diffthis, { desc = "Diff buffer" })
 
-    map("n", "<leader>hq", gitsigns.setqflist, { desc = "Quickfix hunksin buffer" })
+    map("n", "<leader>hq", gitsigns.setqflist, { desc = "Quickfix hunks in buffer" })
     map("n", "<leader>hQ", function()
         gitsigns.setqflist "all"
     end, { desc = "Quickfix all hunks" })

@@ -14,6 +14,8 @@ require("lazyload").defer(function()
     vim.lsp.enable {
         "lua_ls",
         "gdscript",
+        "vtsls",
+        "ty",
     }
 
     vim.api.nvim_create_autocmd("LspAttach", {

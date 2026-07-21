@@ -111,6 +111,10 @@
       "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
       "src": "https://github.com/folke/todo-comments.nvim"
     },
+    "touchup.nvim": {
+      "rev": "8924dc42a059d4b48d0168aa99be49e68bf5dc76",
+      "src": "https://github.com/noisesfromspace/touchup.nvim"
+    },
     "venv-selector.nvim": {
       "rev": "cc4bb3975de8835291f9bb45889e96c6b2795fc4",
       "src": "https://github.com/linux-cultist/venv-selector.nvim"

@@ -15,6 +15,7 @@ require("lazyload").defer(function()
         "lua_ls",
         "gdscript",
         "vtsls",
+        "tinymist",
         "ty",
     }
 

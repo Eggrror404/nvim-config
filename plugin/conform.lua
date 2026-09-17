@@ -59,6 +59,7 @@ require("lazyload").defer(function()
         end,
         formatters_by_ft = formatters_by_ft,
         formatters = formatters,
+        default_format_opts = { lsp_format = "fallback" },
     }
 
     vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"

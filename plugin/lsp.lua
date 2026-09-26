@@ -12,8 +12,10 @@ require("lazyload").defer(function()
 
     -- enable LSPs here
     vim.lsp.enable {
+        "clangd",
         "lua_ls",
         "gdscript",
+        "gopls",
         "vtsls",
         "tinymist",
         "ty",
